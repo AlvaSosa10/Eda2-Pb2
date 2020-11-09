@@ -25,6 +25,15 @@ public class Curso {
 			}
 		return seAgrego;
 	}
+	
+	public Alumno buscarAlumnos(Integer dni) {
+		for (Alumno alumno2 : alumnos) {
+			if (alumno2.getDni().equals(dni)) {
+				return alumno2;
+			}
+		}
+		return null;
+	}
 
 	public boolean agregarProfesor(Profesor profesor) {
 		boolean seAgrego = false;
@@ -35,6 +44,15 @@ public class Curso {
 			}
 		return seAgrego;
 	}
+	
+	public Profesor buscarProfesor(Integer dni) {
+		for (Profesor profesor : profesores) {
+			if (profesor.getDni().equals(dni)) {
+				return profesor;
+			}
+		}
+		return null;
+	}
 
 	public boolean agregarAuxiliar(Auxiliar auxiliar) {
 		boolean seAgrego = false;
@@ -44,5 +62,26 @@ public class Curso {
 				auxiliares.add(auxiliar);
 			}
 		return seAgrego;
+	}
+	
+	public Auxiliar buscarAuxiliar(Integer dni) {
+		for (Auxiliar auxiliar : auxiliares) {
+			if (auxiliar.getDni().equals(dni)) {
+				return auxiliar;
+			}
+		}
+		return null;
+	}
+
+	public Boolean eliminarAuxiliar(Integer dni) {
+		// TODO Auto-generated method stub
+		for (Auxiliar auxiliar : auxiliares) {
+			if (auxiliar.getDni().equals(dni)) {
+				auxiliares.remove(auxiliar);
+				return true;
+			}
+		}
+		return false;
+		
 	}
 }

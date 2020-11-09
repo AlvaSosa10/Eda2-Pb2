@@ -120,7 +120,7 @@ public class Alumno extends Persona implements Comparable <Alumno>{
 	}
 	@Override
 	public int compareTo(Alumno otroAlumno) {
-		return this.nombre.compareTo(otroAlumno.nombre);
+		return this.apellido.compareTo(otroAlumno.apellido);
 	}
 
 }

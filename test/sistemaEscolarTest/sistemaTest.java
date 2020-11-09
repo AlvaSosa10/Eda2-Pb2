@@ -65,6 +65,8 @@ public class sistemaTest {
 			assertFalse("No se debe agregar", seAgrego);
 		}*/
 		
+		// hacer buscartest
+		
 		
 		// métodos de prueba para Clase Auxiliar
 		
@@ -76,6 +78,7 @@ public class sistemaTest {
 			String tieneQueDar= " " + 5 + " " + 9 ;
 			assertEquals("no dio bien", seAgrego, tieneQueDar);
 		}
+		//hacer solitartest
 		
 		
 		//prueba de metodos en clase profesor
@@ -87,7 +90,7 @@ public class sistemaTest {
 			Profesor wandulo = new Profesor("ema", "wandulo", 234343, 2015, 5, "fisica", "2do 3era");
 			alumno.inscribirseAcurso("2do 3era");
 			segundo.agregarAlumno(alumno);
-			Boolean seAgrego =  wandulo.agregarAlumnosASuLista(alumno, segundo); 
+			Boolean seAgrego =  wandulo.agregarAlumnosASuLista(37912, segundo); 
 			assertTrue("Se agrego", seAgrego);
 		}
 		@Test
@@ -99,4 +102,5 @@ public class sistemaTest {
 		}
 		
 		//prueba de métodos clase Alumno
+		// test 
 }

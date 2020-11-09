@@ -43,6 +43,17 @@ public class Auxiliar extends Persona {
 		return antiguedad ;
 	}
 	
+	// SolicitarCambio de curso
+	
+	/*public Boolean solicitarCambioDeCurso (Curso curso, String nuevoCurso) {
+		if(curso.buscarAuxiliar(this.dni)!= null) {
+			curso.eliminarAuxiliar(this.dni);
+			this.cursoAsignado = nuevoCurso;
+			return true;
+		}
+		return false;
+	}*/
+	
 	public void setTareas(String tareas) {
 		this.desempeño = tareas;
 	}

@@ -1,5 +1,6 @@
 package sistemaEscolar;
 
+import java.util.HashSet;
 import java.util.TreeSet;
 
 public class Profesor extends Persona {
@@ -49,13 +50,13 @@ public class Profesor extends Persona {
 		return antiguedad ;
 	}
     //cree la clase curso que es contenedora y en ella se crean curso, y despues en curso se agrega alumno, profesor y auxiliar
-	public Boolean agregarAlumnosASuLista(Alumno alumno, Curso curso) {
+	public Boolean agregarAlumnosASuLista(Integer dni, Curso curso) {
 		Boolean seAgrego = false;
 		if (curso != null) {
-			if (curso.agregarAlumno(alumno)) {
-				alumnos.add(alumno);
+			if (curso.buscarAlumnos(dni)!= null) {
+				alumnos.add(curso.buscarAlumnos(dni));
+				seAgrego = true;
 			}
-			seAgrego = true;
 		}
 		return seAgrego;
 	}
@@ -88,9 +89,9 @@ public class Profesor extends Persona {
 	}
 	
 	//falta el test
-	public Double calcularPromedio() {
+	public Double calcularPromedio(Integer dni) {
 		Double promedio;
-		Alumno alumno = buscarAlumnos(dni);
+		Alumno alumno = buscarAlumnos(dni);//colocar una restricción de examenes
 		promedio = (alumno.getNota1erExamen() + alumno.getNota2doExamen() + alumno.getNota3erExamen()) / 3;
 		alumno.setPromedioFinal(promedio);
 		return promedio;
@@ -98,20 +99,22 @@ public class Profesor extends Persona {
 
 	// falta test
 	public Boolean informarCondiconDelAlumnoEnLaMateria(Integer dni) {
-		Alumno alumno = buscarAlumnos(dni);
+		//Alumno alumno = buscarAlumnos(dni);
 		Boolean aprobo = false;
-		if (alumno.getPromedioFinal() >= 7.0) {
+		if (calcularPromedio(dni)>= 7.0) {
 			aprobo = true;
 		}
 		return aprobo;
 	}
 
 	// falta test
-	public void informarNotaDeExamenPrevio(Integer dni, Double nota) {
+	public Boolean informarNotaDeExamenPrevio(Integer dni, Double nota) {
 		Alumno alumno = buscarAlumnos(dni);
 		if(alumno.rendirExamenPrevio()) {
 			alumno.setNotaExamenPrevio(nota);
+			return true;
 		}
+		return false;
 	}
 	
 	// falta test
