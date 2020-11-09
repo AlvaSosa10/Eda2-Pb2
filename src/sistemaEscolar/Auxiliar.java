@@ -1,19 +1,16 @@
 package sistemaEscolar;
 
-
-
 public class Auxiliar extends Persona {
 
 	private String desempeño;
-    private String curso;
-    private String antiguedad;
+    private String cursoAsignado;
     private Integer añoIngreso, mesIngreso;
     
-    public Auxiliar(String nombre, String apellido, Integer dni,Integer año,Integer mes,String curso) {
+    public Auxiliar(String nombre, String apellido, Integer dni,Integer año,Integer mes,String cursoAsigando) {
 		super(nombre, apellido, dni);
 		this.añoIngreso = año;
 		this.mesIngreso = mes;
-		this.curso = curso;
+		this.cursoAsignado = cursoAsigando;
 	}
 
 	@Override
@@ -25,24 +22,29 @@ public class Auxiliar extends Persona {
 		return desempeño;
 	}
 	public String getCurso() {
-		return curso;
+		return cursoAsignado;
 	}
+	
 	//Hace el metodo calcular antiguedad
 	public String calcularAntiguedad(Integer añoActual,Integer mesActual) {	
-		return antiguedad;
-			
+		Integer cantidadAños;
+		if(mesActual < mesIngreso) {
+			cantidadAños = añoActual - 1 - añoIngreso;
+		}else {
+			cantidadAños = añoActual  - añoIngreso;
 		}
+		Integer cantidadMes;
+		if(mesActual < mesIngreso) {
+			cantidadMes = (mesActual + 12 - mesIngreso);
+		}else {
+			 cantidadMes = (mesActual - mesIngreso);
+		}
+		String antiguedad = " " + cantidadAños + " " + cantidadMes;
+		return antiguedad ;
+	}
+	
 	public void setTareas(String tareas) {
 		this.desempeño = tareas;
-	}
-
-
-	public String getAntiguedad() {
-		return antiguedad;
-	}
-
-	public void setAntiguedad(String antiguedad) {
-		this.antiguedad = antiguedad;
 	}
 
 	public Integer getAñoIngreso() {

@@ -1,6 +1,6 @@
 package sistemaEscolar;
 
-public class Alumno extends Persona {
+public class Alumno extends Persona implements Comparable <Alumno>{
 	private String desempeño, curso;
 	private Double promedioFinal, notaExamenPrevio;
 	private Double nota1erExamen, nota2doExamen, nota3erExamen;
@@ -48,7 +48,8 @@ public class Alumno extends Persona {
 		}
 		return this.numeroDeExamen;
 	}
-
+	
+	// falta test
 	public Boolean anotarseAprevia() {
 		Boolean seAnoto = false;
 		if (getPromedioFinal() < 7.0) {
@@ -65,21 +66,21 @@ public class Alumno extends Persona {
 		return promociono;
 	}
 
-	public Boolean examenPrevio(Double nota) {
-		boolean regularizoMateria = false;
-		if (nota >= 4) {
-			regularizoMateria = true;
-			notaExamenPrevio = nota;
+	public Boolean rendirExamenPrevio() {
+		boolean rinde = false;
+		if (anotarseAprevia()) {
+			rinde = true;
 		}
-		return regularizoMateria;
+		return rinde;
 	}
+	
 
 	public Double getPromedioFinal() {
 		return promedioFinal;
 	}
 
-	public Double getNotaExamenPrevio() {
-		return notaExamenPrevio;
+	public Double setNotaExamenPrevio(Double nota) {
+		return this.notaExamenPrevio = nota;
 	}
 
 	public String getCurso() {
@@ -88,6 +89,10 @@ public class Alumno extends Persona {
 
 	public void setPromedioFinal(Double promedioFinal) {
 		this.promedioFinal = promedioFinal;
+	}
+	
+	public Integer getNumeroDeExamen() {
+		return numeroDeExamen;
 	}
 
 	public Double getNota1erExamen() {
@@ -113,4 +118,9 @@ public class Alumno extends Persona {
 	public void setNota3erExamen(Double nota3erExamen) {
 		this.nota3erExamen = nota3erExamen;
 	}
+	@Override
+	public int compareTo(Alumno otroAlumno) {
+		return this.nombre.compareTo(otroAlumno.nombre);
+	}
+
 }

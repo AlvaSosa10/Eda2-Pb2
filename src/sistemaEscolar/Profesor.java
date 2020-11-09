@@ -4,16 +4,19 @@ import java.util.TreeSet;
 
 public class Profesor extends Persona {
 	private String desempeño;
-	private String antiguedad;
-	private String materia, curso;
-	private Integer cargaHoraria, añoIngreso, mesIngreso;
+	private String materia, cursoAsignado;
+	private Integer añoIngreso, mesIngreso;
   //elegi TreeSet para que devolvamos la coleccion de lista de alumnos del profesor en orden alfabetico
  //despues volvemos a mirar el video de ruben y borgeat que hicieron con mariano, ahi esta hecho el test de la colaccion treeset
 	private TreeSet<Alumno> alumnos;
 
-	public Profesor(String nombre, String apellido, Integer dni) {
+	public Profesor(String nombre, String apellido, Integer dni,Integer añoIngreso, Integer mesIngreso, String materia, String cursoAsignado) {
 		super(nombre, apellido, dni);
-		// TODO Auto-generated constructor stub
+		this.materia = materia;
+		this.cursoAsignado = cursoAsignado;
+		this.añoIngreso = añoIngreso;
+		this.mesIngreso = mesIngreso;
+		this.alumnos = new TreeSet<Alumno>();
 	}
 
 	@Override
@@ -26,11 +29,24 @@ public class Profesor extends Persona {
 	}
 	//seguí con los métodos que relacionan al alumno y profesor
 	public String getCurso() {
-		return curso;
+		return cursoAsignado;
 	}
     //alva hace el metodo calcular antiguedad y usalo tambien en auxiliares
 	public String calcularAntiguedad(Integer añoActual, Integer mesActual) {
-		return antiguedad;
+		Integer cantidadAños;
+		if(mesActual < mesIngreso) {
+			cantidadAños = añoActual - 1 - añoIngreso;
+		}else {
+			cantidadAños = añoActual  - añoIngreso;
+		}
+		Integer cantidadMes;
+		if(mesActual < mesIngreso) {
+			cantidadMes = (mesActual + 12 - mesIngreso);
+		}else {
+			 cantidadMes = (mesActual - mesIngreso);
+		}
+		String antiguedad = " " + cantidadAños + " " + cantidadMes;
+		return antiguedad ;
 	}
     //cree la clase curso que es contenedora y en ella se crean curso, y despues en curso se agrega alumno, profesor y auxiliar
 	public Boolean agregarAlumnosASuLista(Alumno alumno, Curso curso) {
@@ -46,29 +62,32 @@ public class Profesor extends Persona {
 
 	public Alumno buscarAlumnos(Integer dni) {
 		for (Alumno alumno2 : alumnos) {
-			if (dni.equals(alumno2)) {
+			if (alumno2.getDni().equals(dni)) {
 				return alumno2;
 			}
 		}
 		return null;
 	}
-
+	// falta test de este metodo
 	public Double informarNotaDeExamen(Integer dni, Double nota, Integer numExamen) {
 		Alumno alumno = buscarAlumnos(dni);
-		switch (numExamen) {
-		case 1:
-			alumno.setNota1erExamen(nota);
-			break;
-		case 2:
-			alumno.setNota2doExamen(nota);
-			break;
-		case 3:
-			alumno.setNota3erExamen(nota);
-			break;
+		if(alumno.getNumeroDeExamen().equals(numExamen)) {
+			switch (numExamen) {
+			case 1:
+				alumno.setNota1erExamen(nota);
+				break;
+			case 2:
+				alumno.setNota2doExamen(nota);
+				break;
+			case 3:
+				alumno.setNota3erExamen(nota);
+				break;
+			}
 		}
 		return nota;
 	}
-
+	
+	//falta el test
 	public Double calcularPromedio() {
 		Double promedio;
 		Alumno alumno = buscarAlumnos(dni);
@@ -77,6 +96,7 @@ public class Profesor extends Persona {
 		return promedio;
 	}
 
+	// falta test
 	public Boolean informarCondiconDelAlumnoEnLaMateria(Integer dni) {
 		Alumno alumno = buscarAlumnos(dni);
 		Boolean aprobo = false;
@@ -86,16 +106,21 @@ public class Profesor extends Persona {
 		return aprobo;
 	}
 
-	public Double tomarExamenPrevio(Integer dni, Double nota) {
+	// falta test
+	public void informarNotaDeExamenPrevio(Integer dni, Double nota) {
 		Alumno alumno = buscarAlumnos(dni);
-		if (alumno.anotarseAprevia()) {
-			alumno.examenPrevio(nota);
+		if(alumno.rendirExamenPrevio()) {
+			alumno.setNotaExamenPrevio(nota);
 		}
-		return nota;
 	}
-
+	
+	// falta test
 	public TreeSet<Alumno> mostrarListaAlumnosAlfabeticamente() {
 		return this.alumnos;
+	}
+	
+	public String getMateria() {
+		return materia;
 	}
 
 }
