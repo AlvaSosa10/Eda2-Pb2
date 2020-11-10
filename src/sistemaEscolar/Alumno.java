@@ -1,7 +1,7 @@
 package sistemaEscolar;
 
 public class Alumno extends Persona implements Comparable <Alumno>{
-	private String desempeño, curso;
+	private String funcion, curso;
 	private Double promedioFinal, notaExamenPrevio;
 	private Double nota1erExamen, nota2doExamen, nota3erExamen;
 	private Integer numeroDeExamen;
@@ -11,13 +11,13 @@ public class Alumno extends Persona implements Comparable <Alumno>{
 	}
 
 	@Override
-	public void evaluarDesempeño(String desempeño) {
-		this.desempeño = desempeño;
+	public void indicarFuncion(String funcion) {
+		this.funcion = funcion;
 
 	}
 
-	public String getDesempeño() {
-		return desempeño;
+	public String getFuncion() {
+		return funcion;
 	}
 
 	/*

@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.TreeSet;
 
 public class Profesor extends Persona {
-	private String desempeño;
+	private String funcion;
 	private String materia, cursoAsignado;
 	private Integer añoIngreso, mesIngreso;
   //elegi TreeSet para que devolvamos la coleccion de lista de alumnos del profesor en orden alfabetico
@@ -21,12 +21,12 @@ public class Profesor extends Persona {
 	}
 
 	@Override
-	public void evaluarDesempeño(String desempeño) {
-		this.desempeño = desempeño;
+	public void indicarFuncion(String funcion) {
+		this.funcion = funcion;
 	}
 
-	public String getDesempeño() {
-		return desempeño;
+	public String getFuncion() {
+		return funcion;
 	}
 	//seguí con los métodos que relacionan al alumno y profesor
 	public String getCurso() {

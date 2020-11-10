@@ -128,6 +128,15 @@ public class sistemaTest {
 		String tieneQueDar = " " + 5 + " " + 9;
 		assertEquals("no dio bien", seAgrego, tieneQueDar);
 	}
+	
+	@Test
+	public void testIndicarFuncionAuxiliar() {
+		Auxiliar wandulo = new Auxiliar("ema", "wandulo", 234343, 2015, 2, "2do 3era");
+		wandulo.indicarFuncion("organizar y realizar el acondicionamiento edilicio en aulas y sectores comunes");
+		String seAgrego = wandulo.getFuncion();
+		String esperado = "organizar y realizar el acondicionamiento edilicio en aulas y sectores comunes";
+		assertEquals("no dio bien", seAgrego, esperado);
+	}
 
 	// TEST CLASE PROFESOR
 
@@ -140,6 +149,14 @@ public class sistemaTest {
 		segundo.agregarAlumno(alumno);
 		Boolean seAgrego = wandulo.agregarAlumnosASuLista(37912, segundo);
 		assertTrue("Se agrego", seAgrego);
+	}
+	@Test
+	public void testIndicarFuncionProfesor() {
+		Profesor wandulo = new Profesor("ema", "wandulo", 234343, 2015, 2, "fisica", "2do 3era");
+		wandulo.indicarFuncion("desarrollar planificacion y llevarla a cabo en el aula para dictar la enseñanza");
+		String seAgrego = wandulo.getFuncion();
+		String esperado = "desarrollar planificacion y llevarla a cabo en el aula para dictar la enseñanza";
+		assertEquals("no dio bien", seAgrego, esperado);
 	}
 
 	@Test
@@ -252,7 +269,16 @@ public class sistemaTest {
 		Integer actual = 1;
 		assertEquals("no rindio", rindio, actual);
 	}
-
+	
+	@Test
+	public void testIndicarFuncionAlumno() {
+		Alumno alumno = new Alumno("juan", "mamani", 37912);
+		alumno.indicarFuncion("poner atencion a las clases, orginzar su material y tiempo de estudio");
+		String seAgrego = alumno.getFuncion();
+		String esperado = "poner atencion a las clases, orginzar su material y tiempo de estudio";
+		assertEquals("no dio bien", seAgrego, esperado);
+	}
+	
 	@Test
 	public void queUnAlumnoPuedaSaberSuNota() {
 		Curso segundo = new Curso("2do 3era");

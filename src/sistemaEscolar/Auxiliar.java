@@ -2,7 +2,7 @@ package sistemaEscolar;
 
 public class Auxiliar extends Persona {
 
-	private String desempeño;
+	private String funcion;
     private String cursoAsignado;
     private Integer añoIngreso, mesIngreso;
     
@@ -14,12 +14,12 @@ public class Auxiliar extends Persona {
 	}
 
 	@Override
-	public void evaluarDesempeño(String desempeño) {
-		this.desempeño = desempeño;
+	public void indicarFuncion(String funcion) {
+		this.funcion = funcion;
 
 	}
-	public String getDesempeño() {
-		return desempeño;
+	public String getFuncion() {
+		return funcion;
 	}
 	public String getCurso() {
 		return cursoAsignado;
@@ -42,18 +42,6 @@ public class Auxiliar extends Persona {
 		String antiguedad = " " + cantidadAños + " " + cantidadMes;
 		return antiguedad ;
 	}
-	
-	// SolicitarCambio de curso
-	
-	/*public Boolean solicitarCambioDeCurso (Curso curso, String nuevoCurso) {
-		if(curso.buscarAuxiliar(this.dni)!= null) {
-			curso.eliminarAuxiliar(this.dni);
-			this.cursoAsignado = nuevoCurso;
-			return true;
-		}
-		return false;
-	}*/
-	
 	
 	public Integer getAñoIngreso() {
 		return añoIngreso;
