@@ -18,8 +18,9 @@ public class Curso {
 
 	public boolean agregarAlumno(Alumno alumno) {
 		boolean seAgrego = false;
-		if (alumno != null)
-			if (alumnos.size() < 5 && this.añoYDivision.equals(alumno.getCurso())) {
+		if (buscarAlumnos(alumno.getDni()) != null) {
+			seAgrego = false;}
+		else if (alumnos.size() < 5 && this.añoYDivision.equals(alumno.getCurso())) {
 				alumnos.add(alumno);
 				seAgrego = true;
 			}
@@ -37,11 +38,12 @@ public class Curso {
 
 	public boolean agregarProfesor(Profesor profesor) {
 		boolean seAgrego = false;
-		if (profesor != null)
-			if (this.añoYDivision.equals(profesor.getCurso())) {
-				profesores.add(profesor);
-				seAgrego = true;
-			}
+		if (buscarProfesor(profesor.getDni()) != null) {
+			seAgrego = false;
+		} else if (this.añoYDivision.equals(profesor.getCurso())) {
+			profesores.add(profesor);
+			seAgrego = true;
+		}
 		return seAgrego;
 	}
 	
@@ -56,11 +58,12 @@ public class Curso {
 
 	public boolean agregarAuxiliar(Auxiliar auxiliar) {
 		boolean seAgrego = false;
-		if (auxiliar != null)
-			if (this.añoYDivision.equals(auxiliar.getCurso()) && auxiliares.size() < 2) {
-				seAgrego = true;
-				auxiliares.add(auxiliar);
-			}
+		if (buscarAuxiliar(auxiliar.getDni()) != null) {
+			seAgrego = false;
+		} else if (this.añoYDivision.equals(auxiliar.getCurso())&& auxiliares.size()<2) {
+			auxiliares.add(auxiliar);
+			seAgrego = true;
+		}
 		return seAgrego;
 	}
 	
@@ -72,16 +75,19 @@ public class Curso {
 		}
 		return null;
 	}
-
-	public Boolean eliminarAuxiliar(Integer dni) {
-		// TODO Auto-generated method stub
-		for (Auxiliar auxiliar : auxiliares) {
-			if (auxiliar.getDni().equals(dni)) {
-				auxiliares.remove(auxiliar);
-				return true;
-			}
-		}
-		return false;
-		
+	public Integer verCantidadDeAlumnos() {
+		return alumnos.size();
 	}
+
+//	public Boolean eliminarAuxiliar(Integer dni) {
+//		// TODO Auto-generated method stub
+//		for (Auxiliar auxiliar : auxiliares) {
+//			if (auxiliar.getDni().equals(dni)) {
+//				auxiliares.remove(auxiliar);
+//				return true;
+//			}
+//		}
+//		return false;
+//		
+//	}
 }

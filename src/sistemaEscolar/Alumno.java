@@ -11,7 +11,7 @@ public class Alumno extends Persona implements Comparable <Alumno>{
 	}
 
 	@Override
-	public void verDesempeño(String desempeño) {
+	public void evaluarDesempeño(String desempeño) {
 		this.desempeño = desempeño;
 
 	}
@@ -32,21 +32,25 @@ public class Alumno extends Persona implements Comparable <Alumno>{
 	// la idea es que el pibe rinda mandandole al profesor el numero de examen que
 	// esta entregando y que con eso
 	// el profesor pueda setear las notas del pibe como te dije arriba, nota 1,2 y 3
-	public Integer rendirExamen(Integer numeroDeExamen) {
+	public Boolean rendirExamen(Integer numeroDeExamen) {
+		Boolean rindio = false;
 		switch (numeroDeExamen) {
 		case 1:
 			this.numeroDeExamen = numeroDeExamen;
+			rindio = true;
 			break;
 
 		case 2:
 			this.numeroDeExamen = numeroDeExamen;
+			rindio = true;
 			break;
 
 		case 3:
 			this.numeroDeExamen = numeroDeExamen;
+			rindio = true;
 			break;
 		}
-		return this.numeroDeExamen;
+		return rindio;
 	}
 	
 	// falta test

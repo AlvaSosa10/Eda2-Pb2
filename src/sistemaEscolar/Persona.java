@@ -30,7 +30,7 @@ public abstract class Persona {
 		this.dni = dni;
 	}
     
-    public abstract void verDesempeño(String desempeño);
+    public abstract void evaluarDesempeño(String desempeño);
 	
     @Override
 	public int hashCode() {

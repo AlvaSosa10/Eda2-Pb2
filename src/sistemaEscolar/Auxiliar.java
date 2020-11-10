@@ -14,8 +14,8 @@ public class Auxiliar extends Persona {
 	}
 
 	@Override
-	public void verDesempeño(String tareas) {
-		this.desempeño = tareas;
+	public void evaluarDesempeño(String desempeño) {
+		this.desempeño = desempeño;
 
 	}
 	public String getDesempeño() {
@@ -54,10 +54,7 @@ public class Auxiliar extends Persona {
 		return false;
 	}*/
 	
-	public void setTareas(String tareas) {
-		this.desempeño = tareas;
-	}
-
+	
 	public Integer getAñoIngreso() {
 		return añoIngreso;
 	}

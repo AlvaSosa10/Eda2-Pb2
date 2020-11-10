@@ -21,8 +21,8 @@ public class Profesor extends Persona {
 	}
 
 	@Override
-	public void verDesempeño(String tareas) {
-		this.desempeño = tareas;
+	public void evaluarDesempeño(String desempeño) {
+		this.desempeño = desempeño;
 	}
 
 	public String getDesempeño() {
@@ -90,16 +90,18 @@ public class Profesor extends Persona {
 	
 	//falta el test
 	public Double calcularPromedio(Integer dni) {
-		Double promedio;
-		Alumno alumno = buscarAlumnos(dni);//colocar una restricción de examenes
-		promedio = (alumno.getNota1erExamen() + alumno.getNota2doExamen() + alumno.getNota3erExamen()) / 3;
-		alumno.setPromedioFinal(promedio);
+		Double promedio = 0.0;
+		Alumno alumno = buscarAlumnos(dni);
+		if (alumno.getNota1erExamen() != null && alumno.getNota2doExamen() != null
+				&& alumno.getNota3erExamen() != null) {
+			promedio = (alumno.getNota1erExamen() + alumno.getNota2doExamen() + alumno.getNota3erExamen()) / 3;
+			alumno.setPromedioFinal(promedio);
+		}
 		return promedio;
 	}
 
 	// falta test
-	public Boolean informarCondiconDelAlumnoEnLaMateria(Integer dni) {
-		//Alumno alumno = buscarAlumnos(dni);
+	public Boolean informarCondicionDelAlumnoEnLaMateria(Integer dni) {
 		Boolean aprobo = false;
 		if (calcularPromedio(dni)>= 7.0) {
 			aprobo = true;
